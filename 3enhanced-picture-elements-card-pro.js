@@ -909,51 +909,19 @@ class EnhancedPictureElementsCardPro extends HTMLElement {
   }
 
   static getConfigElement() {
-    // Verificar se o editor já foi registrado
-    if (!customElements.get('enhanced-picture-elements-card-editor')) {
-      console.log('Registrando editor...');
-      // O editor já está definido no mesmo arquivo, só garantir que está disponível
-    }
+    // Criar e retornar uma instância do nosso editor
     const editor = document.createElement('enhanced-picture-elements-card-editor');
-    console.log('Editor criado:', editor);
     return editor;
   }
 
   static getStubConfig() {
     return {
       type: 'custom:enhanced-picture-elements-card-pro',
-      title: 'Casa Inteligente',
+      title: 'Minha Casa',
       image: '/local/floorplan.png',
       theme: 'default',
       animations: true,
-      gestures: false,
-      auto_refresh: 30000,
-      elements: [
-        {
-          type: 'switch',
-          entity: 'switch.living_room_light',
-          style: {
-            left: '50%',
-            top: '30%',
-            transform: 'translate(-50%, -50%)'
-          },
-          caption: {
-            template: 'Sala - {{state}}',
-            '--caption-color': 'white',
-            '--caption-background': 'rgba(0,0,0,0.7)'
-          }
-        }
-      ],
-      gesture_actions: {
-        'swipe-up': {
-          service: 'light.turn_on',
-          service_data: { entity_id: 'group.all_lights' }
-        },
-        'swipe-down': {
-          service: 'light.turn_off',
-          service_data: { entity_id: 'group.all_lights' }
-        }
-      }
+      elements: []
     };
   }
 }
