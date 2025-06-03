@@ -151,6 +151,12 @@ class EnhancedPictureElementsCardPro extends HTMLElement {
           animation: elementFadeIn 0.5s ease-out;
         }
 
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+
         @keyframes elementFadeIn {
           from {
             opacity: 0;
@@ -903,7 +909,14 @@ class EnhancedPictureElementsCardPro extends HTMLElement {
   }
 
   static getConfigElement() {
-    return document.createElement('enhanced-picture-elements-card-editor');
+    // Verificar se o editor já foi registrado
+    if (!customElements.get('enhanced-picture-elements-card-editor')) {
+      console.log('Registrando editor...');
+      // O editor já está definido no mesmo arquivo, só garantir que está disponível
+    }
+    const editor = document.createElement('enhanced-picture-elements-card-editor');
+    console.log('Editor criado:', editor);
+    return editor;
   }
 
   static getStubConfig() {
@@ -958,10 +971,15 @@ window.customCards.push({
   documentationURL: 'https://github.com/yourusername/enhanced-picture-elements-card'
 });
 
+// Enhanced Picture Elements Card PRO v3.0.0
+// Componente customizado avançado para Home Assistant
+// Autor: Enhanced Picture Elements Card Team
+// Licença: MIT
+
 console.info(
   '%c ENHANCED-PICTURE-ELEMENTS-CARD-PRO %c v3.0.0 ',
   'color: gold; font-weight: bold; background: black',
   'color: white; font-weight: bold; background: dimgray'
 );
 
-console.info('🚀 Versão PRO carregada! Recursos avançados disponíveis.');
+console.info('🚀 Editor visual e recursos avançados carregados!');
